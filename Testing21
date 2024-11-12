@@ -1,0 +1,71 @@
+local CurrentVersion = "Kezi Hub V1"
+
+    -- Call Library
+    local GUI = loadstring(game:HttpGet("https://twix.cyou/Orion.txt", true))()
+
+    -- Main Frame
+    local Window = GUI:MakeWindow({Name = CurrentVersion, TestMode = true, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+    --[[
+    Name = <string> - The name of the UI.
+    TestMode = <bool> - Whether or not to show the Tester label under the player's display name.
+    SaveConfig = <bool> - Toggles the config saving in the UI.
+    ConfigFolder = <string> - The name of the folder where the configs are saved.
+    IntroEnabled = <bool> - Whether or not to show the intro animation.
+    IntroText = <string> - Text to show in the intro animation.
+    IntroIcon = <string> - URL to the image you want to use in the intro animation.
+    Icon = <string> - URL to the image you want displayed on the window.
+    CloseCallback = <function> - Function to execute when the window is closed.
+    ]]
+
+    -- Local Ver
+    local TruckAutoFarms = false
+
+    -- AutoFarm Creation
+    local AutoFarm = GUI:Tab{
+        Name = "Auto Farm" ,
+        Icon = "rbxassetid://136244553696277"
+    }
+
+    AutoFarm:AddButton({
+        Name = "Truck AutoFarm",
+        StartingState = false
+        Callback = function()
+                  print("button pressed")
+                  TruckAutoFarms = state
+                  while TruckAutoFarms do
+                    local args = {
+                        [1] = "Truck"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Job"):FireServer(unpack(args))
+                    
+                    wait()
+
+                    local args = {
+                        [1] = "Cirebon"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("TransEvent"):FireServer(unpack(args))
+
+          end    
+    })
+    
+    --[[
+    Name = <string> - The name of the button.
+    Callback = <function> - The function of the button.
+    ]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+end
