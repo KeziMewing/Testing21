@@ -1,11 +1,10 @@
 local CurrentVersion = "Kezi Hub V1"
 
     -- Call Library
-    local GUI = loadstring(game:HttpGet("https://twix.cyou/Orion.txt", true))()
+    local OrionLib = loadstring(game:HttpGet("https://twix.cyou/Orion.txt", true))()
 
     -- Main Frame
-    local Window = GUI:MakeWindow({Name = CurrentVersion, TestMode = true, SaveConfig = true, ConfigFolder = "OrionTest"})
-
+    local Window = OrionLib:MakeWindow({Name = "Title of the library", TestMode = true, SaveConfig = true, ConfigFolder = "OrionTest"})
     --[[
     Name = <string> - The name of the UI.
     TestMode = <bool> - Whether or not to show the Tester label under the player's display name.
